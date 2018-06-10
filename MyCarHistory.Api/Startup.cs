@@ -28,6 +28,8 @@ namespace MyCarHistory.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+            
             app.UseMvc();
         }
     }
