@@ -1,21 +1,41 @@
 import Vue from "vue";
+import VueRouter from "vue-router";
 import HelloComponent from "./components/Hello.vue";
-import HelloDecoratorComponent from "./components/HelloDecorator.vue";
+import SziaComponent from "./components/Szia.vue";
+import { Component, Prop } from "vue-property-decorator";
 
-let v = new Vue({
-    el: "#app",
+Vue.use(VueRouter)
+
+const routes = [
+    { path: '/hello', component: HelloComponent },
+    { path: '/szia', component: SziaComponent }
+];
+
+const router = new VueRouter({
+    routes // short for `routes: routes`
+});
+
+@Component({
     template: `
     <div>
         Name: <input v-model="name" type="text">
-        <h1>Hello Component</h1>
-        <hello-component :name="name" :initialEnthusiasm="5" />
-        <h1>Hello Decorator Component</h1>
-        <hello-decorator-component :name="name" :initialEnthusiasm="5" />
-        </div>
+
+        <p>
+            <router-link to="/hello">Go to Hello</router-link>
+            <router-link to="/szia">Go to Szia</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
     `,
-    data: { name: "World" },
-    components: {
-        HelloComponent,
-        HelloDecoratorComponent
+    router
+})
+class App extends Vue {
+    @Prop() name!: string;
+
+    constructor() {
+        super();
+        this.name = "World";
     }
-});
+}
+
+new App().$mount('#app');

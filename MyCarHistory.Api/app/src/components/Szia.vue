@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="greeting">Hello</div>
+        <div class="greeting">Szia{{exclamationMarks}}</div>
         <button @click="decrement">-</button>
         <button @click="increment">+</button>
     </div>
@@ -10,9 +10,9 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component
-export default class Hello extends Vue {
-  enthusiasm = 4;
-  increment() {
+export default class Szia extends Vue {
+  enthusiasm = 5;
+  increment() { 
     this.enthusiasm++;
   }
   decrement() {
