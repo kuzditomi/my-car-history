@@ -32,3 +32,9 @@ export default Vue.extend({
     }
 });
 </script>
+<style>
+.greeting{
+  color: red;
+}
+</style>
+
